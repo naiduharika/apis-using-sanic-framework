@@ -5,7 +5,7 @@ import sanic.exceptions
 import sanic.response
 from time import time
 
-from zoocasa import app, logger
+from apis_using_sanic import app, logger
 
 log = logger.get_logger(__name__)
 
@@ -58,7 +58,7 @@ def _default_response(request, exception):
         {
             "timestamp": int(time() * 100),
             "message": exception.message,
-            "exception": type(exception)._name_,
+            "exception": type(exception).__name__,
             "path": request.path,
             "method": request.method,
             "status_code": exception.status_code,

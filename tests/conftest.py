@@ -1,3 +1,3 @@
-from zoocasa.config import core
+from apis_using_sanic.config import core
 
 core.initialize()

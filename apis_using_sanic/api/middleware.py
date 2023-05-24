@@ -1,6 +1,6 @@
 from sanic.response import text
 
-from zoocasa import app
+from apis_using_sanic import app
 
 CORS_HEADERS = {
     "Access-Control-Allow-Methods": "POST, GET, OPTIONS, PUT, HEAD, DELETE",

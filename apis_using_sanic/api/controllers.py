@@ -1,11 +1,13 @@
 from datetime import datetime
+from json import loads
 
 from sanic.request import Request
 from sanic.response import HTTPResponse, json, text
 
-from zoocasa import logger
-from zoocasa.config.errors import ServerError
-from zoocasa.utils.validation import validate
+from apis_using_sanic import logger
+from apis_using_sanic.config.errors import ServerError
+from apis_using_sanic.utils.validation import validate
+from apis_using_sanic.api.services.get_listings import get_listings
 
 log = logger.get_logger(__name__)
 
@@ -35,6 +37,17 @@ async def hello_world_intro(request: Request) -> HTTPResponse:
         num_languages = f"and I can speak {len(req['languages'])} languages"
         languages_list = f"they are {', '.join(language.capitalize() for language in sorted(req['languages']))}"
         return text(f"{name_str} {num_languages} {languages_list}")
+    except Exception as e:
+        log.error(e)
+        raise ServerError()
+
+
+async def listings(request: Request) -> HTTPResponse:
+    try:
+        req = request.args
+        print(req)
+        listings = get_listings(req)
+        return json({"data": listings})
     except Exception as e:
         log.error(e)
         raise ServerError()

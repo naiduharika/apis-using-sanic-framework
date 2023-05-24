@@ -1,5 +1,5 @@
-from zoocasa import app, blueprint, logger, settings
-from zoocasa.api import router_index
+from apis_using_sanic import app, blueprint, logger, settings
+from apis_using_sanic.api import router_index
 
 log = logger.get_logger(__name__)
 

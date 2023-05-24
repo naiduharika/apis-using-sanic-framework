@@ -1,6 +1,6 @@
 import pytest
 
-from zoocasa import app
+from apis_using_sanic import app
 
 
 @pytest.mark.asyncio

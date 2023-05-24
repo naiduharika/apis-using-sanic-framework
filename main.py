@@ -1,5 +1,5 @@
-from zoocasa.config import core
-from zoocasa import logger
+from apis_using_sanic.config import core
+from apis_using_sanic import logger
 
 log = logger.get_logger(__name__)
 
